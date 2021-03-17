@@ -36,9 +36,10 @@ app.get("/pokemon/:name", (request, response, next) => {
         if(pokemon.name == name){
             response.status(200);
             response.send(pokemon);
+        } else {
+            response.status(404);
+            response.send("Pokémon no encontrado");
         }
-        response.status(404);
-        response.send("Pokémon no encontrado");
     });
 });
 
