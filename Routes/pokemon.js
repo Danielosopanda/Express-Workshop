@@ -9,17 +9,17 @@ pokemon.post("/", (request, response, next) => {
 // /pokemon (mostrar todos los pokémon)
 pokemon.get("/", async (request, response, next) => {
     const pkmn = await db.query("SELECT * FROM pokemon");
-    return response.status(200).json(pkmn);
+    return response.status(200).json({ code: 1, message: pkmn});
 });
 
 
 // Buscar un pokemon por su id
 pokemon.get("/:id([0-9]{1,3})", (request, response, next) => {
     const id = request.params.id - 1;
-    if(id >= 0 && id <= 150){
-        return response.status(200).send(pk[request.params.id - 1]);  
+    if (id >= 0 && id <= 722) {
+        return response.status(200).json({ code: 1, message: pkmn });  
     } else {
-        return response.status(404).send("Pokémon no encontrado");
+        return response.status(404).json({ code: 404, message: "Pokémon no encontrado" });
     }   
 });
 
