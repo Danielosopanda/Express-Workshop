@@ -2,8 +2,23 @@ const express = require("express");
 const pokemon = express.Router();
 const db = require("../config/database");
 
-pokemon.post("/", (request, response, next) => {
-    return response.status(200).send(request.body)
+pokemon.post("/", async (request, response, next) => {
+    const { pok_name, pok_height, pok_weight, pok_base_experience } = request.body;
+
+    if(pok_name && pok_height && pok_weight && pok_base_experience){
+        let query = "INSERT INTO pokemon (pok_name, pok_height, pok_weight, pok_base_experience)";
+        query += ` VALUES('${pok_name}', ${pok_height}, ${pok_weight}, ${pok_base_experience})`;
+
+        const rows = await db.query(query);
+
+        if(rows.affectedRows == 1){
+            return response.status(201).json({ code: 201, message: "Pokémon insertado correctamente" })
+        }
+
+        return response.status(500).json({ code: 500, message: "Ocurrió un error" });
+    }    
+
+    return response.status(500).json({ code: 500, message: "Campos incompletos" });
 });
 
 // /pokemon (mostrar todos los pokémon)
@@ -11,6 +26,7 @@ pokemon.get("/", async (request, response, next) => {
     const pkmn = await db.query("SELECT * FROM pokemon");
     return response.status(200).json({ code: 1, message: pkmn});
 });
+
 
 
 // Buscar un pokemon por su id
