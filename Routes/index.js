@@ -1,8 +1,16 @@
+//Dependencias
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+
+//Routers
 const pokemon = require("./pokemon");
 const user = require("./user");
+
+//Middleware
+const auth = require("../Middleware/auth");
+const notFound = require("../Middleware/notFound");
+const index = require("../Middleware/index");
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -10,16 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //Página principal
-app.get("/", (request, response, next) => {
-    return response.status(200).json({ code: 1, messsage: "Bienvenido al pokédex" });
-});
+app.get("/", );
 
-app.use("/pokemon", pokemon);
 app.use("/user", user);
 
-app.use((request, response, next) => {
-    return response.status(404).json({ code: 404, message: "URL no encontrada" });
-});
+app.use(auth);
+
+app.use("/pokemon", pokemon);
+
+app.use(notFound);
 
 // Inciar servidor
 app.listen(process.env.PORT || 3000, () => {
