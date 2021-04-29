@@ -41,7 +41,7 @@ user.post("/login", async (request, response, next) => {
 
             return response.status(200).json({ code: 200, message: token });
         } else {
-            return response.status(401).json({ code: 401, message: "El usuario y la contraseña no coinciden" });
+            return response.status(200).json({ code: 200, message: "El usuario y la contraseña no coinciden" });
         }
     }
     return response.status(500).json({ code: 500, message: "Campos incompletos" });
