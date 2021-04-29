@@ -96,5 +96,4 @@ pokemon.get("/:name([A-Za-z]+)", (request, response, next) => {
 
 });
 
-
 module.exports = pokemon; 
