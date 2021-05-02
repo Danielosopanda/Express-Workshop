@@ -5,7 +5,7 @@ const app = express();
 
 //Routers
 const pokemon = require("./pokemon");
-const user = require("./user");
+const user = require("../Routes/user");
 
 //Middleware
 const auth = require("../Middleware/auth");
@@ -21,13 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //Página principal
 app.get("/", index);
-
 app.use("/user", user);
-
 app.use(auth);
-
 app.use("/pokemon", pokemon);
-
 app.use(notFound);
 
 // Inciar servidor

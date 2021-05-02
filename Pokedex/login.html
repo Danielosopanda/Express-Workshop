@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Log In</title>
 </head>
-
 <body>
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-6 offset-3">
-                <h1>Inicia sesión</h1>
+       <form id="logInForm" class="logInForm form sombra" method="POST">
+            <h2>¡Bienvenido a la Pokédex!</h2>
+
+            <div class="campos">
+                <h3>Inicia Sesión</h3>
+
+                <div class="formCampo">
+                    <label for="inputMail">Correo electrónico</label>
+                    <input class="textInput" id="inputMail" type="mail" placeholder="tunombre@correo.com">
+                </div>
+                <div class="formCampo">
+                    <label for="inputPassword">Contraseña</label>
+                    <input class="textInput" id="inputPassword" type="password" placeholder="********">
+                </div> 
             </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-6 offset-3">
-                <div class="form-group">
-                    <label for="input-mail">Correo electrónico</label>
-                    <input type="email" class="form-control" id="input-mail" placeholder="correo@dominio.ext">
-                    <small class="form-text text-muted">El correo con el que te registraste.</small>
-                </div>
-                <div class="form-group">
-                    <label for="input-password">Contraseña</label>
-                    <input type="password" class="form-control" id="input-password" placeholder="***********">
-                </div>
-                <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Entrar</button>
-                    <button class="btn btn-secondary">Registro</button>
-                </div>
+            
+            <div class="buttons">
+                <button id="logInBtn" class="formBtn sombra" type="submit">Iniciar Sesión</button>
+                <a class="logInLink" href="signin.html">¿No tienes una cuenta?</a>
             </div>
-        </div>
+            
+        </form> 
     </div>
-    <script src="JS/login.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="JS/login2.js"></script>
 </body>
 </html>

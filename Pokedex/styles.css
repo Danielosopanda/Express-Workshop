@@ -1,0 +1,145 @@
+:root {
+    --mainColor: #fafafa;
+    --formColor: white;
+    --secondaryColor: #ff0000;
+    --terciaryColor: #3B4CCA;
+    --formPadding: 16px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--mainColor);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    height: 380px;
+    padding: var(--formPadding);
+    background: var(--formColor);
+    color: #0a0a0a;
+    border-radius: 4px;
+}
+
+.logInForm {
+    height: 380px;
+}
+.signInForm {
+    height: 420px;
+}
+
+/* .logInForm::after {
+    content: "";
+    width: calc(100% + 32px);
+    height: 50%;
+    background: white;
+    position: relative;
+    right: 16px;
+    z-index: 1;
+} */
+
+.form h2 {
+    font-size: 30px;
+    background: var(--secondaryColor);
+    color: #fafafa;
+    width: calc(100% + var(--formPadding) * 2);
+    position: relative;
+    right: var(--formPadding);
+    bottom: var(--formPadding);
+    padding: 14px;
+    padding-left: var(--formPadding);
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+.form h3 {
+    font-size: 22px;
+}
+
+.campos {
+    position: relative;
+    bottom: 12px;
+}
+
+.formCampo {
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
+}
+
+.form label {
+    position: relative;
+    padding-left: 2px;
+    top: 4px;
+    font-size: 12px;
+    color: #888;
+}
+
+.form input {
+    outline: none;
+    padding: 4px 2px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #0a0a0a;
+    transition: 250ms ease all;
+}
+
+/*  .logInForm input::after {
+    position: relative;
+    left: 200px;
+    content: "";
+    width: 500px;
+    height: 500px;
+    background: green;
+    z-index: 2;
+} */
+
+.form input:focus {
+    border-bottom: 2px solid var(--terciaryColor);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.formBtn {
+    padding: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background: var(--terciaryColor);
+    color: #fafafa;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.formBtn:hover {
+    background: #485bee;
+}
+
+.logInLink, .signInLink {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+    color: #0a0a0a;
+}
+
+.sombra {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .25),
+    10px 10px 40px rgba(0, 0, 0, .05);
+}

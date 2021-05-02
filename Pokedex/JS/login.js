@@ -18,13 +18,11 @@ const login = () => {
             user_password: pass
         }
     }).then((response) => {
-
         console.log(response);
 
     }).catch((error) => {
-
+        console.log(error);
         
-
     });
 }
 
