@@ -4,6 +4,7 @@
     --secondaryColor: #ff0000;
     --terciaryColor: #3B4CCA;
     --formPadding: 16px;
+    --errorColor: #ff0033;
 }
 
 * {
@@ -41,15 +42,6 @@
     height: 420px;
 }
 
-/* .logInForm::after {
-    content: "";
-    width: calc(100% + 32px);
-    height: 50%;
-    background: white;
-    position: relative;
-    right: 16px;
-    z-index: 1;
-} */
 
 .form h2 {
     font-size: 30px;
@@ -77,8 +69,33 @@
 .formCampo {
     display: flex;
     flex-direction: column;
-    margin: 7px 0;
+    margin: 8px 0;
 }
+
+/* .formCampo .errorBlock {
+    position: absolute;
+    right: -180px;
+    width: 150px;
+    height: 50px;
+    padding: 2px 12px;
+    background: var(--errorColor);
+    font-size: 13px;
+    color: #fafafa;
+    border-radius: 4px;
+}
+
+.formCampo .errorBlock::before {
+    --ladoCuadrado: 10px;
+    content: "";
+    position: relative;
+    top: calc(50% - 5px);
+    left: calc(var(--ladoCuadrado)*-.75);
+    transform: rotate(45deg);
+    display: block;
+    width: var(--ladoCuadrado);
+    height: var(--ladoCuadrado);
+    background: var(--errorColor);
+} */
 
 .form label {
     position: relative;

@@ -1,91 +1,29 @@
-const regEx = {
-    mail: /^[A-Za-zÄ-ý0-9-_.]+@[A-Za-zÄ-ý0-9-_.]+\.[A-Za-zÄ-ý0-9-_.]+$/,
-    password: /^.{4,}$/ 
-}
-
-const campos = {
-    mail: false,
-    password: false
-}
-
-const mailInput = document.querySelector("#inputMail"),
-        passwordInput = document.querySelector("#inputPassword"),
-        inputs = document.querySelectorAll(".textInput");
-
-
-inputs.forEach(input => {
-    input.addEventListener("click", () => {
-        input.style.borderBottom = "2px solid #3B4CCA";
-    })
-    input.addEventListener("blur", () => {
-        input.style.borderBottom = "2px solid #0a0a0a";
-    })
-});
-
-const validarMail = () => {
-    var mail = mailInput.value;
-    if(regEx.mail.test(mail)) {
-        console.log("Mail válido");
-        mailInput.style.borderBottom = "2px solid #4BB543";
-        campos.mail = true;
-    } else {
-        console.log("Mail inválido")
-        mailInput.style.borderBottom = "2px solid #ff0033";
-        campos.mail = false;
-    }
-}
-
-const validarPassword = () => {
-    var pass = passwordInput.value;
-    if(regEx.password.test(pass)) {
-        console.log("Contraseña válida");
-        passwordInput.style.borderBottom = "2px solid #4BB543";
-        campos.password = true;
-    } else {
-        console.log("Contraseña inválida");
-        passwordInput.style.borderBottom = "2px solid #ff0033";
-        campos.password = false;
-    }
-}
-
-
-
 const init = () => {
-    document.querySelector("#logInForm").addEventListener("submit", login);
+    document.querySelector(".btn-secondary").addEventListener("click", () => {
+        window.location.href = "signin.html";
+    });
+
+    document.querySelector(".btn-primary").addEventListener("click", login);
 }
 
-const login = (e) => {
-    var mail = document.querySelector("#inputMail").value;
-    var pass = document.querySelector("#inputPassword").value;
+const login = () => {
+    var mail = document.querySelector("#input-mail").value;
+    var pass = document.querySelector("#input-password").value;
 
-    validarMail();
-    validarPassword();
+    axios({ 
+        method: "post",
+        url: "http://localhost:3000/user/login",
+        data: {
+            user_mail: mail,
+            user_password: pass
+        }
+    }).then((response) => {
+        console.log(response);
 
-    e.preventDefault();
-    
-    if(campos.mail && campos.password){
-
-        axios({ 
-            method: "post",
-            url: "http://localhost:3000/user/login",
-            data: {
-                user_mail: mail,
-                user_password: pass
-            }
-        }).then((response) => {
-            console.log(response);
-
-        }).catch((error) => {
-            console.log(error);
-
-        }); 
-
-    } else {
-        e.preventDefault();
-    }
-
-    
-    
+    }).catch((error) => {
+        console.log(error);
+        
+    });
 }
 
 window.onload = init;

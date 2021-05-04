@@ -1,26 +1,42 @@
 const regEx = {
     mail: /^[A-Za-zÄ-ý0-9-_.]+@[A-Za-zÄ-ý0-9-_.]+\.[A-Za-zÄ-ý0-9-_.]+$/,
+    name: /^[A-Za-zÄ-ý\s]{3,40}$/,
     password: /^.{4,}$/ 
 }
 
 const campos = {
     mail: false,
+    name: false,
     password: false
 }
 
-const   mailInput = document.querySelector("#inputMail"),
+const   nameInput = document.querySelector("#inputName"),
+        mailInput = document.querySelector("#inputMail"),
         passwordInput = document.querySelector("#inputPassword"),
+        signInForm = document.querySelector("#signInForm"),
         inputs = document.querySelectorAll(".textInput");
-
 
 inputs.forEach(input => {
     input.addEventListener("click", () => {
         input.style.borderBottom = "2px solid #3B4CCA";
-    })
-    input.addEventListener("blur", () => {
-        input.style.borderBottom = "2px solid #0a0a0a";
-    })
+    });
+        input.addEventListener("blur", () => {
+            input.style.borderBottom = "2px solid #0a0a0a";
+    });
 });
+
+const validarName = () => {
+    var name = nameInput.value;
+    if(regEx.name.test(name)) {
+        console.log("Nombre válido");
+        nameInput.style.borderBottom = "2px solid #4BB543";
+        campos.name = true;
+    } else {
+        console.log("Nombre inválido")
+        nameInput.style.borderBottom = "2px solid #ff0033";
+        campos.name = false;
+    }
+}
 
 const validarMail = () => {
     var mail = mailInput.value;
@@ -48,27 +64,22 @@ const validarPassword = () => {
     }
 }
 
-
-
-const init = () => {
-    document.querySelector("#logInForm").addEventListener("submit", login);
-}
-
-const login = (e) => {
-    var mail = document.querySelector("#inputMail").value;
-    var pass = document.querySelector("#inputPassword").value;
-
+const signIn = (e) => {
+    validarName();
     validarMail();
     validarPassword();
 
-    
-    
-    if(campos.mail && campos.password){
+    var name = nameInput.value,
+        mail = mailInput.value,
+        pass = passwordInput.value;
+
+    if(campos.name && campos.mail && campos.password) {
 
         axios({ 
             method: "post",
-            url: "http://localhost:3000/user/login",
+            url: "http://localhost:3000/user/signin",
             data: {
+                user_name: name,
                 user_mail: mail,
                 user_password: pass
             }
@@ -79,13 +90,12 @@ const login = (e) => {
             console.log(error);
 
         }); 
+        
 
     } else {
         
     }
-
     e.preventDefault();
-    
 }
 
-window.onload = init;
+signInForm.addEventListener("submit", signIn);
