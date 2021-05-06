@@ -51,7 +51,11 @@ const validarPassword = () => {
 
 
 const init = () => {
-    document.querySelector("#logInForm").addEventListener("submit", login);
+    if(!localStorage.getItem("token")){
+        document.querySelector("#logInForm").addEventListener("submit", login);
+    } else {
+        window.location.href = "pokedex.html";
+    }
 }
 
 const login = (e) => {
@@ -60,8 +64,6 @@ const login = (e) => {
 
     validarMail();
     validarPassword();
-
-    
     
     if(campos.mail && campos.password){
 
@@ -73,15 +75,20 @@ const login = (e) => {
                 user_password: pass
             }
         }).then((response) => {
-            console.log(response);
+            console.log(response.data);
+
+            if(response.data.code === 200) {
+                localStorage.setItem("token", response.data.message);
+                window.location.href = "pokedex.html";
+            } else {
+                alert("Usuario inválido");
+            }
 
         }).catch((error) => {
             console.log(error);
 
         }); 
 
-    } else {
-        
     }
 
     e.preventDefault();

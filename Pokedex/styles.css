@@ -5,6 +5,7 @@
     --terciaryColor: #3B4CCA;
     --formPadding: 16px;
     --errorColor: #ff0033;
+    --borderRadius: 4px;
 }
 
 * {
@@ -16,6 +17,7 @@
 
 .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -32,7 +34,7 @@
     padding: var(--formPadding);
     background: var(--formColor);
     color: #0a0a0a;
-    border-radius: 4px;
+    border-radius: var(--borderRadius);
 }
 
 .logInForm {
@@ -137,6 +139,7 @@
     padding: 8px;
     outline: none;
     border: none;
+    border-radius: var(--borderRadius);
     cursor: pointer;
     font-size: 16px;
     background: var(--terciaryColor);
@@ -156,7 +159,56 @@
     color: #0a0a0a;
 }
 
+.pokedexContainer {
+    width: 60%;
+    border-radius: var(--borderRadius);
+    margin: 60px auto;
+}
+
+.pokedex {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 16px;
+    gap: 12px;
+    width: 100%;
+    min-height: 300px;
+    background: var(--secondaryColor);
+    border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+}
+
+.pokedexContainer h1, .pokedexContainer .pokedex {
+    padding: 16px 24px;
+}
+
+.pokemonCard {
+    width: 100%;
+    position: relative;
+    min-height: 100px;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: var(--borderRadius);
+    display: inline-block;
+    transition: 200ms ease all;
+}
+
+.pokemonCard:hover {
+    background: var(--terciaryColor);
+    color: #fafafa;
+    cursor: pointer;
+    width: 110%;
+    right: 5%;
+}
+
+.pokemonCard img {
+    width: 100%;
+    border-radius: var(--borderRadius);
+}
+
+.pokemonCard h3 {
+    text-align: center;
+}
+
 .sombra {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .25),
-    10px 10px 40px rgba(0, 0, 0, .05);
+    15px 15px 40px rgba(0, 0, 0, .1);
 }

@@ -64,6 +64,9 @@ const validarPassword = () => {
     }
 }
 
+
+
+
 const signIn = (e) => {
     validarName();
     validarMail();
@@ -90,12 +93,16 @@ const signIn = (e) => {
             console.log(error);
 
         }); 
-        
-
-    } else {
-        
     }
     e.preventDefault();
 }
 
-signInForm.addEventListener("submit", signIn);
+window.onload = () => {
+    if(!localStorage.getItem("token")) {
+        signInForm.addEventListener("submit", signIn);
+    } else {
+        window.location.href = "pokedex.html";
+    }
+
+}
+
