@@ -20,7 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //Página principal
-app.get("/", index);
+app.get("/", (request, response, next) => {
+    response.status(200);
+    response.send("Hola mundo");
+});
 app.use("/user", user);
 app.use(auth);
 app.use("/pokemon", pokemon);
