@@ -1,5 +1,5 @@
 var headers = {},
-    url = "http://localhost:3000";
+    url = "https://dmg-express-workshop.herokuapp.com";
 
 window.onload = () => {
     if(localStorage.getItem("token")) {

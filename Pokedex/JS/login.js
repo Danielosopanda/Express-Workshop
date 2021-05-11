@@ -69,7 +69,7 @@ const login = (e) => {
 
         axios({ 
             method: "post",
-            url: "http://localhost:3000/user/login",
+            url: "https://dmg-express-workshop.herokuapp.com/user/login",
             data: {
                 user_mail: mail,
                 user_password: pass
