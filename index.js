@@ -4,14 +4,14 @@ const morgan = require("morgan");
 const app = express();
 
 //Routers
-const pokemon = require("./pokemon");
-const user = require("../Routes/user");
+const pokemon = require("./Routes/pokemon");
+const user = require("./Routes/user");
 
 //Middleware
-const auth = require("../Middleware/auth");
-const notFound = require("../Middleware/notFound");
-const index = require("../Middleware/index");
-const CORS = require("../Middleware/CORS");
+const auth = require("./Middleware/auth");
+const notFound = require("./Middleware/notFound");
+const index = require("./Middleware/index");
+const CORS = require("./Middleware/CORS");
 
 app.use(CORS);
 app.use(morgan("dev"));
