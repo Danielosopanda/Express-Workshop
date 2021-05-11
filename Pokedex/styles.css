@@ -244,3 +244,10 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .25),
     15px 15px 40px rgba(0, 0, 0, .1);
 }
+
+
+@media screen and (max-width:415px) {
+    .form {
+        width: 90%;
+    }
+}
